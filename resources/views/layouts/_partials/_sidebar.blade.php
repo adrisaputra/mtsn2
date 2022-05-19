@@ -1,46 +1,23 @@
 
             <div class="left side-menu">
 
+            @php
+$setting = SiteHelpers::setting();
+@endphp
                 <div class="slimscroll-menu" id="remove-scroll">
 
                     <!-- LOGO -->
                     <div class="topbar-left">
                         <a href="index.html" class="logo">
                             <span>
-                                <img src="{{ asset('guest_book/assets/images/logo.png') }}" alt="" height="22">
+                                <img src="{{ asset('upload/setting/' . $setting->large_icon) }}" alt="" height="50">
                             </span>
                             <i>
-                                <img src="{{ asset('guest_book/assets/images/logo_sm.png') }}" alt="" height="28">
+                                <img src="{{ asset('upload/setting/' . $setting->small_icon) }}" alt="" height="50">
                             </i>
                         </a>
                     </div>
 
-                    <!-- User box -->
-                    <div class="user-box">
-                        <div class="user-img">
-                            <img src="{{ asset('guest_book/assets/images/users/avatar-1.jpg') }}" alt="user-img" title="Mat Helme" class="rounded-circle img-fluid">
-                        </div>
-                        <h5><a href="#">Maxine Kennedy</a> </h5>
-                        <p class="text-muted">Admin Head</p>
-                    </div>
-
-                    <!--- Sidemenu -->
-                    <div id="sidebar-menu">
-
-                        <ul class="metismenu" id="side-menu">
-
-                            <!--<li class="menu-title">Navigation</li>-->
-
-                            <li>
-                                <a href="index.html">
-                                    <i class="fi-air-play"></i><span class="badge badge-danger badge-pill pull-right">7</span> <span> Dashboard </span>
-                                </a>
-                            </li>
-
-                        </ul>
-
-                    </div>
-                    <!-- Sidebar -->
 
                     <div class="clearfix"></div>
 

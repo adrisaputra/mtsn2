@@ -45,6 +45,7 @@ Route::get('/clear-cache-all', function() {
 // });
 Route::get('/',[GuestBookController::class, 'index']);
 Route::post('/guest_book', [GuestBookController::class, 'store']);
+Route::get('/guest_book/search', [GuestBookController::class, 'search']);
 
 Route::post('/login_w', [LoginController::class, 'authenticate']);
 Route::get('registrasi_w', [RegistrasiController::class, 'registrasi']);

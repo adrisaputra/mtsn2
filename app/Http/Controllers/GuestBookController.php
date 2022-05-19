@@ -16,10 +16,26 @@ class GuestBookController extends Controller
     public function index()
     {
         $title = "Buku Tamu";
-        $guest_book = GuestBook::orderBy('id', 'DESC')->paginate(20)->onEachSide(1);
+        $guest_book = GuestBook::orderBy('id', 'DESC')->paginate(25)->onEachSide(1);
         return view('guest_book.index', compact('title', 'guest_book'));
     }
 
+	## Tampilkan Data Search
+	public function search(Request $request)
+    {
+        $title = "Buku Tamu";
+        $guest_book = $request->get('search');
+        $guest_book = GuestBook::
+                        where(function ($query) use ($guest_book) {
+                            $query->where('guest_name', 'LIKE', '%' . $guest_book . '%')
+                                ->orWhere('agency_name', 'LIKE', '%' . $guest_book . '%')
+                                ->orWhere('destination_name', 'LIKE', '%' . $guest_book . '%')
+                                ->orWhere('necessity', 'LIKE', '%' . $guest_book . '%');
+                        })->orderBy('id','DESC')->paginate(25)->onEachSide(1);
+        
+        return view('guest_book.index', compact('title', 'guest_book'));
+    }
+	
     ## Simpan Data
     public function store(Request $request)
     {

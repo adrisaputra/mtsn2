@@ -16,6 +16,7 @@
                 <h4 class="header-title m-t-0">Selamat datang di MTsN 1 Kendari</h4>
                 <div class="button-list">
                     <button type="button" class="btn btn-info waves-effect waves-light" data-toggle="modal" data-target=".bs-example-modal-lg">Isi Buku Tamu</button>
+                    <a href="{{ url('/') }}" class="btn btn-warning btn-flat" title="Refresh halaman">Refresh</a>
                 </div>
                 </div>
             <!-- end row -->
@@ -36,8 +37,7 @@
                             <th>Asal Instansi</th>
                             <th>Yang Ingin Ditemui</th>
                             <th>Keperluan</th>
-                            <th>Foto</th>
-                            <th class="hidden-sm">Aksi</th>
+                            <th>Waktu</th>
                         </tr>
                     </thead>
     
@@ -50,13 +50,7 @@
                             <td>{{ $v->agency_name }}</td>
                             <td>{{ $v->destination_name }}</td>
                             <td>{{ $v->necessity }}</td>
-                            <td>
-                                    <img src="{{ asset('upload/images/'.$v->photo ) }}" alt="{{ $v->photo }}" title="{{ $v->photo }}" class="rounded-circle" height="10px"/>
-                            </td>
-                            <td>
-                                <a href="{{ url('/'.Request::segment(1).'/edit/'.Crypt::encrypt($v->id)) }}" class="btn btn-sm btn-custom waves-effect waves-light">Edit</a>
-                                <a href="{{ url('/'.Request::segment(1).'/hapus/'.Crypt::encrypt($v->id) ) }}" class="btn btn-sm btn-danger waves-effect waves-light"  onclick="return confirm('Anda Yakin ?');">Hapus</a>
-                            </td>
+                            <td>{{ $v->created_at->format('d-m-Y H:i:s') }}</td>
                         </tr>
                         @endforeach
                     </tbody>
