@@ -59,7 +59,7 @@ Route::put('/user/edit_profil/{user}', [UserController::class, 'update_profil'])
 Route::middleware(['user_access','verified'])->group(function () {
     
     ## Pegawai
-    Route::get('/pegawai', [PegawaiController::class, 'index']);
+    Route::get('/guest_book', [GuestBookController::class, 'index']);
     Route::get('/pegawai/search', [PegawaiController::class, 'search']);
     Route::get('/pegawai/create', [PegawaiController::class, 'create']);
     Route::post('/pegawai', [PegawaiController::class, 'store']);
