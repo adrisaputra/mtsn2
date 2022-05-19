@@ -11,7 +11,7 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
--- membuang struktur untuk table db_laravel.activity_log
+-- membuang struktur untuk table db_mtsn2.activity_log
 CREATE TABLE IF NOT EXISTS `activity_log` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `log_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -29,9 +29,9 @@ CREATE TABLE IF NOT EXISTS `activity_log` (
   KEY `subject` (`subject_type`,`subject_id`),
   KEY `causer` (`causer_type`,`causer_id`),
   KEY `activity_log_log_name_index` (`log_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=437 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=448 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Membuang data untuk tabel db_laravel.activity_log: ~389 rows (lebih kurang)
+-- Membuang data untuk tabel db_mtsn2.activity_log: ~438 rows (lebih kurang)
 /*!40000 ALTER TABLE `activity_log` DISABLE KEYS */;
 INSERT INTO `activity_log` (`id`, `log_name`, `description`, `subject_type`, `event`, `subject_id`, `causer_type`, `causer_id`, `properties`, `batch_uuid`, `created_at`, `updated_at`) VALUES
 	(1, 'default', 'Log Out', NULL, NULL, NULL, 'App\\Models\\User', 482, '[]', NULL, '2021-10-29 10:30:24', '2021-10-29 10:30:24'),
@@ -469,10 +469,21 @@ INSERT INTO `activity_log` (`id`, `log_name`, `description`, `subject_type`, `ev
 	(433, 'default', 'Log Out', NULL, NULL, NULL, 'App\\Models\\User', 504, '[]', NULL, '2022-03-08 10:36:58', '2022-03-08 10:36:58'),
 	(434, 'default', 'Login', NULL, NULL, NULL, 'App\\Models\\User', 504, '[]', NULL, '2022-03-08 10:37:06', '2022-03-08 10:37:06'),
 	(435, 'default', 'Log Out', NULL, NULL, NULL, 'App\\Models\\User', 504, '[]', NULL, '2022-03-08 10:37:10', '2022-03-08 10:37:10'),
-	(436, 'default', 'Log Out', NULL, NULL, NULL, 'App\\Models\\User', 504, '[]', NULL, '2022-03-08 10:44:30', '2022-03-08 10:44:30');
+	(436, 'default', 'Log Out', NULL, NULL, NULL, 'App\\Models\\User', 504, '[]', NULL, '2022-03-08 10:44:30', '2022-03-08 10:44:30'),
+	(437, 'default', 'Login', NULL, NULL, NULL, 'App\\Models\\User', 1, '[]', NULL, '2022-05-19 14:31:19', '2022-05-19 14:31:19'),
+	(438, 'default', 'Tambah Data Buku Tamu', NULL, NULL, NULL, NULL, NULL, '[]', NULL, '2022-05-19 16:32:32', '2022-05-19 16:32:32'),
+	(439, 'default', 'Tambah Data Buku Tamu', NULL, NULL, NULL, NULL, NULL, '[]', NULL, '2022-05-19 16:43:02', '2022-05-19 16:43:02'),
+	(440, 'default', 'Tambah Data Buku Tamu', NULL, NULL, NULL, NULL, NULL, '[]', NULL, '2022-05-19 16:45:13', '2022-05-19 16:45:13'),
+	(441, 'default', 'Tambah Data Buku Tamu', NULL, NULL, NULL, NULL, NULL, '[]', NULL, '2022-05-19 19:02:09', '2022-05-19 19:02:09'),
+	(442, 'default', 'Tambah Data Buku Tamu', NULL, NULL, NULL, NULL, NULL, '[]', NULL, '2022-05-19 19:05:41', '2022-05-19 19:05:41'),
+	(443, 'default', 'Tambah Data Buku Tamu', NULL, NULL, NULL, NULL, NULL, '[]', NULL, '2022-05-19 19:08:57', '2022-05-19 19:08:57'),
+	(444, 'default', 'Tambah Data Buku Tamu', NULL, NULL, NULL, NULL, NULL, '[]', NULL, '2022-05-19 19:15:26', '2022-05-19 19:15:26'),
+	(445, 'default', 'Tambah Data Buku Tamu', NULL, NULL, NULL, NULL, NULL, '[]', NULL, '2022-05-19 19:15:57', '2022-05-19 19:15:57'),
+	(446, 'default', 'Tambah Data Buku Tamu', NULL, NULL, NULL, NULL, NULL, '[]', NULL, '2022-05-19 19:16:16', '2022-05-19 19:16:16'),
+	(447, 'default', 'Tambah Data Buku Tamu', NULL, NULL, NULL, NULL, NULL, '[]', NULL, '2022-05-19 19:16:59', '2022-05-19 19:16:59');
 /*!40000 ALTER TABLE `activity_log` ENABLE KEYS */;
 
--- membuang struktur untuk table db_laravel.failed_jobs
+-- membuang struktur untuk table db_mtsn2.failed_jobs
 CREATE TABLE IF NOT EXISTS `failed_jobs` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `uuid` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -485,11 +496,11 @@ CREATE TABLE IF NOT EXISTS `failed_jobs` (
   UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Membuang data untuk tabel db_laravel.failed_jobs: ~0 rows (lebih kurang)
+-- Membuang data untuk tabel db_mtsn2.failed_jobs: ~0 rows (lebih kurang)
 /*!40000 ALTER TABLE `failed_jobs` DISABLE KEYS */;
 /*!40000 ALTER TABLE `failed_jobs` ENABLE KEYS */;
 
--- membuang struktur untuk table db_laravel.groups
+-- membuang struktur untuk table db_mtsn2.groups
 CREATE TABLE IF NOT EXISTS `groups` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `group_name` varchar(18) DEFAULT NULL,
@@ -500,7 +511,7 @@ CREATE TABLE IF NOT EXISTS `groups` (
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
 
--- Membuang data untuk tabel db_laravel.groups: ~3 rows (lebih kurang)
+-- Membuang data untuk tabel db_mtsn2.groups: ~3 rows (lebih kurang)
 /*!40000 ALTER TABLE `groups` DISABLE KEYS */;
 INSERT INTO `groups` (`id`, `group_name`, `status`, `user_id`, `created_at`, `updated_at`) VALUES
 	(1, 'Administrator', 0, 1, '2022-01-11 13:01:48', '2022-01-11 13:01:48'),
@@ -508,7 +519,27 @@ INSERT INTO `groups` (`id`, `group_name`, `status`, `user_id`, `created_at`, `up
 	(3, 'Kasir', 0, 1, '2022-01-18 10:38:17', '2022-01-18 10:41:41');
 /*!40000 ALTER TABLE `groups` ENABLE KEYS */;
 
--- membuang struktur untuk table db_laravel.menus
+-- membuang struktur untuk table db_mtsn2.guest_books
+CREATE TABLE IF NOT EXISTS `guest_books` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `guest_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `agency_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `destination_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `necessity` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `photo` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Membuang data untuk tabel db_mtsn2.guest_books: ~0 rows (lebih kurang)
+/*!40000 ALTER TABLE `guest_books` DISABLE KEYS */;
+INSERT INTO `guest_books` (`id`, `guest_name`, `agency_name`, `destination_name`, `necessity`, `photo`, `created_at`, `updated_at`) VALUES
+	(1, 'Adri Saputra Ibrahim', 'Technos Studio', 'Kepala MTsN 1 Kendari', 'Kunjungan Kerja', 'tamu-628623b17c875.png', '2022-05-19 19:08:57', '2022-05-19 19:08:57'),
+	(5, 'ssss', 'dsdsds', 'dsdsds', 'fdfdfd', 'tamu-6286272b38c0b.png', '2022-05-19 19:16:59', '2022-05-19 19:16:59');
+/*!40000 ALTER TABLE `guest_books` ENABLE KEYS */;
+
+-- membuang struktur untuk table db_mtsn2.menus
 CREATE TABLE IF NOT EXISTS `menus` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `menu_name` varchar(18) DEFAULT NULL,
@@ -524,7 +555,7 @@ CREATE TABLE IF NOT EXISTS `menus` (
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
 
--- Membuang data untuk tabel db_laravel.menus: ~5 rows (lebih kurang)
+-- Membuang data untuk tabel db_mtsn2.menus: ~6 rows (lebih kurang)
 /*!40000 ALTER TABLE `menus` DISABLE KEYS */;
 INSERT INTO `menus` (`id`, `menu_name`, `link`, `attribute`, `position`, `desc`, `category`, `status`, `user_id`, `created_at`, `updated_at`) VALUES
 	(4, 'Pengaturan', '#', 'fa fa-cogs', 6, NULL, 1, 1, 1, '2022-01-12 11:05:31', '2022-03-02 10:39:12'),
@@ -535,7 +566,7 @@ INSERT INTO `menus` (`id`, `menu_name`, `link`, `attribute`, `position`, `desc`,
 	(14, 'Kirim Email', 'email', 'fa fa-envelope', 5, NULL, 2, 1, 1, '2022-03-02 10:38:46', '2022-03-02 10:44:57');
 /*!40000 ALTER TABLE `menus` ENABLE KEYS */;
 
--- membuang struktur untuk table db_laravel.menu_accesses
+-- membuang struktur untuk table db_mtsn2.menu_accesses
 CREATE TABLE IF NOT EXISTS `menu_accesses` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `group_id` int(11) NOT NULL DEFAULT 0,
@@ -555,7 +586,7 @@ CREATE TABLE IF NOT EXISTS `menu_accesses` (
   CONSTRAINT `FK_access_tbl_menu_tbl` FOREIGN KEY (`menu_id`) REFERENCES `menus` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
 
--- Membuang data untuk tabel db_laravel.menu_accesses: ~8 rows (lebih kurang)
+-- Membuang data untuk tabel db_mtsn2.menu_accesses: ~8 rows (lebih kurang)
 /*!40000 ALTER TABLE `menu_accesses` DISABLE KEYS */;
 INSERT INTO `menu_accesses` (`id`, `group_id`, `menu_id`, `create`, `read`, `update`, `delete`, `print`, `user_id`, `created_at`, `updated_at`) VALUES
 	(1, 1, 4, 1, 1, 1, 1, 1, 1, '2022-01-13 11:02:25', '2022-01-13 11:02:25'),
@@ -568,15 +599,15 @@ INSERT INTO `menu_accesses` (`id`, `group_id`, `menu_id`, `create`, `read`, `upd
 	(18, 3, 4, 1, 1, 0, 1, 1, 1, '2022-03-02 15:56:59', '2022-03-07 11:18:09');
 /*!40000 ALTER TABLE `menu_accesses` ENABLE KEYS */;
 
--- membuang struktur untuk table db_laravel.migrations
+-- membuang struktur untuk table db_mtsn2.migrations
 CREATE TABLE IF NOT EXISTS `migrations` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Membuang data untuk tabel db_laravel.migrations: ~9 rows (lebih kurang)
+-- Membuang data untuk tabel db_mtsn2.migrations: ~11 rows (lebih kurang)
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(1, '2014_10_12_000000_create_users_table', 1),
@@ -588,10 +619,11 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(7, '2021_05_11_132318_create_events_table', 3),
 	(8, '2021_10_28_132348_create_activity_log_table', 4),
 	(9, '2021_10_28_132349_add_event_column_to_activity_log_table', 4),
-	(10, '2021_10_28_132350_add_batch_uuid_column_to_activity_log_table', 4);
+	(10, '2021_10_28_132350_add_batch_uuid_column_to_activity_log_table', 4),
+	(12, '2022_05_19_145220_create_guest_books_table', 5);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 
--- membuang struktur untuk table db_laravel.password_resets
+-- membuang struktur untuk table db_mtsn2.password_resets
 CREATE TABLE IF NOT EXISTS `password_resets` (
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -599,13 +631,13 @@ CREATE TABLE IF NOT EXISTS `password_resets` (
   KEY `password_resets_email_index` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Membuang data untuk tabel db_laravel.password_resets: ~0 rows (lebih kurang)
+-- Membuang data untuk tabel db_mtsn2.password_resets: ~0 rows (lebih kurang)
 /*!40000 ALTER TABLE `password_resets` DISABLE KEYS */;
 INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
 	('adri.saputra.ibrahim@gmail.com', '$2y$10$1ZCbChwlh1RE.Fl3G0zoje4PR2GtxKM9Nzrrdq2IG1kO1Nv6gKupC', '2022-03-01 11:06:40');
 /*!40000 ALTER TABLE `password_resets` ENABLE KEYS */;
 
--- membuang struktur untuk table db_laravel.pegawai_tbl
+-- membuang struktur untuk table db_mtsn2.pegawai_tbl
 CREATE TABLE IF NOT EXISTS `pegawai_tbl` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nip` varchar(18) DEFAULT NULL,
@@ -627,7 +659,7 @@ CREATE TABLE IF NOT EXISTS `pegawai_tbl` (
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
 
--- Membuang data untuk tabel db_laravel.pegawai_tbl: ~92 rows (lebih kurang)
+-- Membuang data untuk tabel db_mtsn2.pegawai_tbl: ~93 rows (lebih kurang)
 /*!40000 ALTER TABLE `pegawai_tbl` DISABLE KEYS */;
 INSERT INTO `pegawai_tbl` (`id`, `nip`, `nama_pegawai`, `tempat_lahir`, `tanggal_lahir`, `jenis_kelamin`, `alamat`, `agama`, `gol_darah`, `email`, `foto_formal`, `foto_kedinasan`, `status`, `status_hapus`, `user_id`, `created_at`, `updated_at`) VALUES
 	(1, '196406211985032009', 'Hj. Sitti Saleha, SE, M.Si', 'sasa', '1964-06-21', 'Wanita', 'ssa', 'Islam', NULL, 'a@gmail.com', '1635393285.jpg', '1635393266.jpg', 'PNS', 0, 1, '2021-05-03 14:20:18', '2021-10-28 11:54:45'),
@@ -725,7 +757,7 @@ INSERT INTO `pegawai_tbl` (`id`, `nip`, `nama_pegawai`, `tempat_lahir`, `tanggal
 	(93, '197412022014081000', 'Faisal', 'xxx', '1974-12-02', 'Pria', 'xx', 'Islam', NULL, NULL, NULL, NULL, 'PNS', 0, 1, '2021-05-03 14:20:24', '2021-10-29 10:30:57');
 /*!40000 ALTER TABLE `pegawai_tbl` ENABLE KEYS */;
 
--- membuang struktur untuk table db_laravel.personal_access_tokens
+-- membuang struktur untuk table db_mtsn2.personal_access_tokens
 CREATE TABLE IF NOT EXISTS `personal_access_tokens` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `tokenable_type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -741,11 +773,11 @@ CREATE TABLE IF NOT EXISTS `personal_access_tokens` (
   KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Membuang data untuk tabel db_laravel.personal_access_tokens: ~0 rows (lebih kurang)
+-- Membuang data untuk tabel db_mtsn2.personal_access_tokens: ~0 rows (lebih kurang)
 /*!40000 ALTER TABLE `personal_access_tokens` DISABLE KEYS */;
 /*!40000 ALTER TABLE `personal_access_tokens` ENABLE KEYS */;
 
--- membuang struktur untuk table db_laravel.sessions
+-- membuang struktur untuk table db_mtsn2.sessions
 CREATE TABLE IF NOT EXISTS `sessions` (
   `id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_id` bigint(20) unsigned DEFAULT NULL,
@@ -758,13 +790,14 @@ CREATE TABLE IF NOT EXISTS `sessions` (
   KEY `sessions_last_activity_index` (`last_activity`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Membuang data untuk tabel db_laravel.sessions: ~1 rows (lebih kurang)
+-- Membuang data untuk tabel db_mtsn2.sessions: ~6 rows (lebih kurang)
 /*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-	('s6t3pgm9umSLbQzJCy5HBLfZqKIMtQeGlsMvP7pd', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36', 'YTozOntzOjY6Il9mbGFzaCI7YToyOntzOjM6Im5ldyI7YTowOnt9czozOiJvbGQiO2E6MDp7fX1zOjY6Il90b2tlbiI7czo0MDoiN0tuWTkwdDhHZGVuenNQR3lLbmYzc1FZeEM2OXZQR1dtSllRQ2xlWSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDg6Imh0dHA6Ly9sb2NhbGhvc3QvY29yZS1sYXJhdmVsLXRzL2ZvcmdvdC1wYXNzd29yZCI7fX0=', 1646707479);
+	('Drm0RaAM5TInEml4Lrth6MjoM1Vaa8AsQiQxLpjt', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.67 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiM3ZFeWZROVJFM3lMRGFWM3JrbmhhSzRTbnZLRXhWQmhSb1IwT29KVSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjI6Imh0dHA6Ly9sb2NhbGhvc3QvbXRzbjIiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1652959146),
+	('lgTxzRBcuXW42sRxDJk5GQDjrWxIJrsxB6Jms53C', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.67 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoieWhMbFVpSmREVHpJVHFtR2dxdjE2b3laV0dqeWxqS1hXaXRGSHRENCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjI6Imh0dHA6Ly9sb2NhbGhvc3QvbXRzbjIiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjM6InVybCI7YToxOntzOjg6ImludGVuZGVkIjtzOjIyOiJodHRwOi8vbG9jYWxob3N0L210c24yIjt9fQ==', 1652953806);
 /*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
 
--- membuang struktur untuk table db_laravel.settings
+-- membuang struktur untuk table db_mtsn2.settings
 CREATE TABLE IF NOT EXISTS `settings` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `application_name` varchar(200) DEFAULT NULL,
@@ -781,13 +814,13 @@ CREATE TABLE IF NOT EXISTS `settings` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
 
--- Membuang data untuk tabel db_laravel.settings: ~0 rows (lebih kurang)
+-- Membuang data untuk tabel db_mtsn2.settings: ~0 rows (lebih kurang)
 /*!40000 ALTER TABLE `settings` DISABLE KEYS */;
 INSERT INTO `settings` (`id`, `application_name`, `short_application_name`, `small_icon`, `large_icon`, `background_login`, `background_sidebar`, `layout`, `skin`, `user_id`, `created_at`, `updated_at`) VALUES
 	(1, 'CORE LARAVEL', 'CORE', '16354773231.png', '16354769112.png', '16354882883.jpg', NULL, 'default', 'skin-green-light', 1, '2021-10-29 10:58:27', '2022-03-08 10:16:18');
 /*!40000 ALTER TABLE `settings` ENABLE KEYS */;
 
--- membuang struktur untuk table db_laravel.sub_menus
+-- membuang struktur untuk table db_mtsn2.sub_menus
 CREATE TABLE IF NOT EXISTS `sub_menus` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `menu_id` int(11) NOT NULL,
@@ -805,7 +838,7 @@ CREATE TABLE IF NOT EXISTS `sub_menus` (
   CONSTRAINT `FK_sub_menu_tbl_group_tbl` FOREIGN KEY (`menu_id`) REFERENCES `menus` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
 
--- Membuang data untuk tabel db_laravel.sub_menus: ~6 rows (lebih kurang)
+-- Membuang data untuk tabel db_mtsn2.sub_menus: ~6 rows (lebih kurang)
 /*!40000 ALTER TABLE `sub_menus` DISABLE KEYS */;
 INSERT INTO `sub_menus` (`id`, `menu_id`, `sub_menu_name`, `link`, `attribute`, `position`, `desc`, `status`, `user_id`, `created_at`, `updated_at`) VALUES
 	(6, 4, 'User', 'user', 'fa-circle-notch', 1, NULL, 1, 1, '2022-01-12 13:42:20', '2022-01-14 20:01:44'),
@@ -816,7 +849,7 @@ INSERT INTO `sub_menus` (`id`, `menu_id`, `sub_menu_name`, `link`, `attribute`, 
 	(12, 13, 'PDF', 'report_pdf', NULL, 2, NULL, 1, 1, '2022-02-18 09:17:10', '2022-02-18 09:17:10');
 /*!40000 ALTER TABLE `sub_menus` ENABLE KEYS */;
 
--- membuang struktur untuk table db_laravel.sub_menu_accesses
+-- membuang struktur untuk table db_mtsn2.sub_menu_accesses
 CREATE TABLE IF NOT EXISTS `sub_menu_accesses` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `group_id` int(11) NOT NULL DEFAULT 0,
@@ -839,7 +872,7 @@ CREATE TABLE IF NOT EXISTS `sub_menu_accesses` (
   CONSTRAINT `FK_sub_menu_access_tbl_sub_menu_tbl` FOREIGN KEY (`sub_menu_id`) REFERENCES `sub_menus` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
 
--- Membuang data untuk tabel db_laravel.sub_menu_accesses: ~7 rows (lebih kurang)
+-- Membuang data untuk tabel db_mtsn2.sub_menu_accesses: ~7 rows (lebih kurang)
 /*!40000 ALTER TABLE `sub_menu_accesses` DISABLE KEYS */;
 INSERT INTO `sub_menu_accesses` (`id`, `group_id`, `menu_id`, `sub_menu_id`, `create`, `read`, `update`, `delete`, `print`, `user_id`, `created_at`, `updated_at`) VALUES
 	(25, 1, 7, 9, 1, 1, 1, 1, 1, 1, '2022-01-17 11:07:17', '2022-01-17 11:07:17'),
@@ -851,7 +884,7 @@ INSERT INTO `sub_menu_accesses` (`id`, `group_id`, `menu_id`, `sub_menu_id`, `cr
 	(42, 1, 4, 7, 1, 1, 1, 1, 1, 1, '2022-03-08 09:28:05', '2022-03-08 09:28:05');
 /*!40000 ALTER TABLE `sub_menu_accesses` ENABLE KEYS */;
 
--- membuang struktur untuk table db_laravel.users
+-- membuang struktur untuk table db_mtsn2.users
 CREATE TABLE IF NOT EXISTS `users` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -870,7 +903,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `users_email_unique` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=505 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Membuang data untuk tabel db_laravel.users: ~3 rows (lebih kurang)
+-- Membuang data untuk tabel db_mtsn2.users: ~4 rows (lebih kurang)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `remember_token`, `group_id`, `foto`, `status`, `created_at`, `updated_at`) VALUES
 	(1, 'administrator', 'adri.saputra.ibrahim@gmail.com', '2022-03-01 16:30:46', '$2y$10$Rc.eCud5IYgaJAeFIaeT2OQM9L4MiqdVkV..p1wbQvnPxxG6L67my', NULL, NULL, NULL, 1, '1641869792.jpg', 1, '2021-04-05 14:20:00', '2022-03-01 16:30:46'),
