@@ -29,9 +29,9 @@ CREATE TABLE IF NOT EXISTS `activity_log` (
   KEY `subject` (`subject_type`,`subject_id`),
   KEY `causer` (`causer_type`,`causer_id`),
   KEY `activity_log_log_name_index` (`log_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=471 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=484 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Membuang data untuk tabel db_mtsn2.activity_log: ~460 rows (lebih kurang)
+-- Membuang data untuk tabel db_mtsn2.activity_log: ~463 rows (lebih kurang)
 /*!40000 ALTER TABLE `activity_log` DISABLE KEYS */;
 INSERT INTO `activity_log` (`id`, `log_name`, `description`, `subject_type`, `event`, `subject_id`, `causer_type`, `causer_id`, `properties`, `batch_uuid`, `created_at`, `updated_at`) VALUES
 	(1, 'default', 'Log Out', NULL, NULL, NULL, 'App\\Models\\User', 482, '[]', NULL, '2021-10-29 10:30:24', '2021-10-29 10:30:24'),
@@ -503,7 +503,20 @@ INSERT INTO `activity_log` (`id`, `log_name`, `description`, `subject_type`, `ev
 	(467, 'default', 'Ubah Data Sub Menu dengan ID = 11', NULL, NULL, NULL, 'App\\Models\\User', 1, '[]', NULL, '2022-05-19 21:58:52', '2022-05-19 21:58:52'),
 	(468, 'default', 'Ubah Data Sub Menu dengan ID = 12', NULL, NULL, NULL, 'App\\Models\\User', 1, '[]', NULL, '2022-05-19 21:59:17', '2022-05-19 21:59:17'),
 	(469, 'default', 'Ubah Data Sub Menu dengan ID = 12', NULL, NULL, NULL, 'App\\Models\\User', 1, '[]', NULL, '2022-05-19 21:59:28', '2022-05-19 21:59:28'),
-	(470, 'default', 'Hapus Data Menu dengan ID = 14', NULL, NULL, NULL, 'App\\Models\\User', 1, '[]', NULL, '2022-05-19 21:59:44', '2022-05-19 21:59:44');
+	(470, 'default', 'Hapus Data Menu dengan ID = 14', NULL, NULL, NULL, 'App\\Models\\User', 1, '[]', NULL, '2022-05-19 21:59:44', '2022-05-19 21:59:44'),
+	(471, 'default', 'Tambah Data Buku Tamu', NULL, NULL, NULL, NULL, NULL, '[]', NULL, '2022-05-20 09:26:39', '2022-05-20 09:26:39'),
+	(472, 'default', 'Login', NULL, NULL, NULL, 'App\\Models\\User', 1, '[]', NULL, '2022-05-21 18:20:05', '2022-05-21 18:20:05'),
+	(473, 'default', 'Hapus Data guest_book dengan ID = 7', NULL, NULL, NULL, 'App\\Models\\User', 1, '[]', NULL, '2022-05-21 20:25:08', '2022-05-21 20:25:08'),
+	(474, 'default', 'Hapus Data guest_book dengan ID = 6', NULL, NULL, NULL, 'App\\Models\\User', 1, '[]', NULL, '2022-05-21 20:25:16', '2022-05-21 20:25:16'),
+	(475, 'default', 'Log Out', NULL, NULL, NULL, 'App\\Models\\User', 1, '[]', NULL, '2022-05-21 20:33:02', '2022-05-21 20:33:02'),
+	(476, 'default', 'Login', NULL, NULL, NULL, 'App\\Models\\User', 1, '[]', NULL, '2022-05-21 20:36:44', '2022-05-21 20:36:44'),
+	(477, 'default', 'Log Out', NULL, NULL, NULL, 'App\\Models\\User', 1, '[]', NULL, '2022-05-21 20:39:21', '2022-05-21 20:39:21'),
+	(478, 'default', 'Login', NULL, NULL, NULL, 'App\\Models\\User', 1, '[]', NULL, '2022-05-21 20:56:16', '2022-05-21 20:56:16'),
+	(479, 'default', 'Login', NULL, NULL, NULL, 'App\\Models\\User', 1, '[]', NULL, '2022-05-22 06:14:18', '2022-05-22 06:14:18'),
+	(480, 'default', 'Tambah Data Surat Masuk', NULL, NULL, NULL, 'App\\Models\\User', 1, '[]', NULL, '2022-05-22 06:51:51', '2022-05-22 06:51:51'),
+	(481, 'default', 'Ubah Data Surat Masuk dengan ID = 1', NULL, NULL, NULL, 'App\\Models\\User', 1, '[]', NULL, '2022-05-22 07:00:39', '2022-05-22 07:00:39'),
+	(482, 'default', 'Tambah Data Surat Keluar', NULL, NULL, NULL, 'App\\Models\\User', 1, '[]', NULL, '2022-05-22 07:15:49', '2022-05-22 07:15:49'),
+	(483, 'default', 'Log Out', NULL, NULL, NULL, 'App\\Models\\User', 1, '[]', NULL, '2022-05-22 07:45:06', '2022-05-22 07:45:06');
 /*!40000 ALTER TABLE `activity_log` ENABLE KEYS */;
 
 -- membuang struktur untuk table db_mtsn2.failed_jobs
@@ -534,7 +547,7 @@ CREATE TABLE IF NOT EXISTS `groups` (
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
 
--- Membuang data untuk tabel db_mtsn2.groups: ~2 rows (lebih kurang)
+-- Membuang data untuk tabel db_mtsn2.groups: ~3 rows (lebih kurang)
 /*!40000 ALTER TABLE `groups` DISABLE KEYS */;
 INSERT INTO `groups` (`id`, `group_name`, `status`, `user_id`, `created_at`, `updated_at`) VALUES
 	(1, 'Administrator', 0, 1, '2022-01-11 13:01:48', '2022-01-11 13:01:48'),
@@ -552,15 +565,38 @@ CREATE TABLE IF NOT EXISTS `guest_books` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Membuang data untuk tabel db_mtsn2.guest_books: ~3 rows (lebih kurang)
+-- Membuang data untuk tabel db_mtsn2.guest_books: ~2 rows (lebih kurang)
 /*!40000 ALTER TABLE `guest_books` DISABLE KEYS */;
 INSERT INTO `guest_books` (`id`, `guest_name`, `agency_name`, `destination_name`, `necessity`, `photo`, `created_at`, `updated_at`) VALUES
 	(1, 'Adri Saputra Ibrahim', 'Technos Studio', 'Kepala MTsN 1 Kendari', 'Kunjungan Kerja', 'tamu-628623b17c875.png', '2022-05-19 19:08:57', '2022-05-19 19:08:57'),
-	(5, 'ssss', 'dsdsds', 'dsdsds', 'fdfdfd', 'tamu-6286272b38c0b.png', '2022-05-19 19:16:59', '2022-05-19 19:16:59'),
-	(6, 'cc', 'cc', 'ccc', 'ccc', 'tamu-62863ba87d0cc.png', '2022-05-19 20:44:24', '2022-05-19 20:44:24');
+	(5, 'ssss', 'dsdsds', 'dsdsds', 'fdfdfd', 'tamu-6286272b38c0b.png', '2022-05-19 19:16:59', '2022-05-19 19:16:59');
 /*!40000 ALTER TABLE `guest_books` ENABLE KEYS */;
+
+-- membuang struktur untuk table db_mtsn2.incoming_mails
+CREATE TABLE IF NOT EXISTS `incoming_mails` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `mail_number` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `letter_date` date DEFAULT NULL,
+  `entry_date` date DEFAULT NULL,
+  `mail_from` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `sender` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `destination` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `about` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `link` tinytext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `file` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Membuang data untuk tabel db_mtsn2.incoming_mails: ~0 rows (lebih kurang)
+/*!40000 ALTER TABLE `incoming_mails` DISABLE KEYS */;
+INSERT INTO `incoming_mails` (`id`, `mail_number`, `letter_date`, `entry_date`, `mail_from`, `sender`, `destination`, `about`, `link`, `file`, `user_id`, `created_at`, `updated_at`) VALUES
+	(1, '123/XI/2022', '2022-05-11', '2022-05-26', 'Musly', 'JNT', 'adri', 'Surat Undangan', NULL, '1653174039.jpg', 1, '2022-05-22 06:51:51', '2022-05-22 07:00:39');
+/*!40000 ALTER TABLE `incoming_mails` ENABLE KEYS */;
 
 -- membuang struktur untuk table db_mtsn2.menus
 CREATE TABLE IF NOT EXISTS `menus` (
@@ -578,7 +614,7 @@ CREATE TABLE IF NOT EXISTS `menus` (
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
 
--- Membuang data untuk tabel db_mtsn2.menus: ~6 rows (lebih kurang)
+-- Membuang data untuk tabel db_mtsn2.menus: ~4 rows (lebih kurang)
 /*!40000 ALTER TABLE `menus` DISABLE KEYS */;
 INSERT INTO `menus` (`id`, `menu_name`, `link`, `attribute`, `position`, `desc`, `category`, `status`, `user_id`, `created_at`, `updated_at`) VALUES
 	(4, 'Pengaturan', '#', 'fa fa-cogs', 6, NULL, 1, 1, 1, '2022-01-12 11:05:31', '2022-03-02 10:39:12'),
@@ -607,7 +643,7 @@ CREATE TABLE IF NOT EXISTS `menu_accesses` (
   CONSTRAINT `FK_access_tbl_menu_tbl` FOREIGN KEY (`menu_id`) REFERENCES `menus` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
 
--- Membuang data untuk tabel db_mtsn2.menu_accesses: ~7 rows (lebih kurang)
+-- Membuang data untuk tabel db_mtsn2.menu_accesses: ~5 rows (lebih kurang)
 /*!40000 ALTER TABLE `menu_accesses` DISABLE KEYS */;
 INSERT INTO `menu_accesses` (`id`, `group_id`, `menu_id`, `create`, `read`, `update`, `delete`, `print`, `user_id`, `created_at`, `updated_at`) VALUES
 	(1, 1, 4, 1, 1, 1, 1, 1, 1, '2022-01-13 11:02:25', '2022-01-13 11:02:25'),
@@ -622,7 +658,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Membuang data untuk tabel db_mtsn2.migrations: ~11 rows (lebih kurang)
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
@@ -637,8 +673,34 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(8, '2021_10_28_132348_create_activity_log_table', 4),
 	(9, '2021_10_28_132349_add_event_column_to_activity_log_table', 4),
 	(10, '2021_10_28_132350_add_batch_uuid_column_to_activity_log_table', 4),
-	(12, '2022_05_19_145220_create_guest_books_table', 5);
+	(12, '2022_05_19_145220_create_guest_books_table', 5),
+	(13, '2022_05_21_210402_create_incoming_mails_table', 6),
+	(14, '2022_05_21_210521_create_outgoing_mails_table', 6);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
+
+-- membuang struktur untuk table db_mtsn2.outgoing_mails
+CREATE TABLE IF NOT EXISTS `outgoing_mails` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `mail_number` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `letter_date` date DEFAULT NULL,
+  `entry_date` date DEFAULT NULL,
+  `mail_from` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `sender` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `destination` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `about` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `link` tinytext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `file` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Membuang data untuk tabel db_mtsn2.outgoing_mails: ~0 rows (lebih kurang)
+/*!40000 ALTER TABLE `outgoing_mails` DISABLE KEYS */;
+INSERT INTO `outgoing_mails` (`id`, `mail_number`, `letter_date`, `entry_date`, `mail_from`, `sender`, `destination`, `about`, `link`, `file`, `user_id`, `created_at`, `updated_at`) VALUES
+	(1, 'as91/IC/2022', '2022-05-17', '2022-05-18', 'apri', 'J&T', 'adri', 'undangan makan', 'https://stackoverflow.com/questions/53793841/add-title-to-fillable-property-to-allow-mass-assignment-on-app-post', NULL, 1, '2022-05-22 07:15:49', '2022-05-22 07:15:49');
+/*!40000 ALTER TABLE `outgoing_mails` ENABLE KEYS */;
 
 -- membuang struktur untuk table db_mtsn2.password_resets
 CREATE TABLE IF NOT EXISTS `password_resets` (
@@ -807,11 +869,10 @@ CREATE TABLE IF NOT EXISTS `sessions` (
   KEY `sessions_last_activity_index` (`last_activity`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Membuang data untuk tabel db_mtsn2.sessions: ~2 rows (lebih kurang)
+-- Membuang data untuk tabel db_mtsn2.sessions: ~1 rows (lebih kurang)
 /*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-	('9vqmffdgCnbsuk64UtmVxb5hkxh3qO8KGLCGyFuj', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.67 Safari/537.36', 'YTozOntzOjY6Il9mbGFzaCI7YToyOntzOjM6Im5ldyI7YTowOnt9czozOiJvbGQiO2E6MDp7fX1zOjY6Il90b2tlbiI7czo0MDoiUHpVREJGNXJEbmp2dGlQUjVWOGp1RUV3aWs1Mmx1QmtGMDBHOFpieCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjg6Imh0dHA6Ly9sb2NhbGhvc3QvbXRzbjIvbG9naW4iO319', 1652966595),
-	('YoTdc35nRUgFkMDjDVjtfwbcgACXt53qRq9Q8NKr', 1, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.67 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoieERZRW9QZlRNZ2NWNWpOb0ZoMXZEOUlrMHFMNXA3MmlKSFVBOTByZyI7czozOiJ1cmwiO2E6MTp7czo4OiJpbnRlbmRlZCI7czozMjoiaHR0cDovL2xvY2FsaG9zdC9tdHNuMi9kYXNoYm9hcmQiO31zOjk6Il9wcmV2aW91cyI7YToxOntzOjM6InVybCI7czozMjoiaHR0cDovL2xvY2FsaG9zdC9tdHNuMi9kYXNoYm9hcmQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MTc6InBhc3N3b3JkX2hhc2hfd2ViIjtzOjYwOiIkMnkkMTAkUmMuZUN1ZDVJWWdhSkFlRklhZVQyT1FNOUw0TWlxZFZrVi4ucDF3YlF2blB4eEc2TDY3bXkiO30=', 1652968914);
+	('qToxmvYxqlfzfA1EYu5mmDyGrkpMCF0ZWCqCyEOO', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.67 Safari/537.36', 'YTozOntzOjY6Il9mbGFzaCI7YToyOntzOjM6Im5ldyI7YTowOnt9czozOiJvbGQiO2E6MDp7fX1zOjY6Il90b2tlbiI7czo0MDoialRQNm5BRUh0UDQ3a0dCQVBDNzdkZnhRUnp4WDNDN0R5TFg2MHFHeSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjI6Imh0dHA6Ly9sb2NhbGhvc3QvbXRzbjIiO319', 1653179090);
 /*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
 
 -- membuang struktur untuk table db_mtsn2.settings
@@ -888,7 +949,7 @@ CREATE TABLE IF NOT EXISTS `sub_menu_accesses` (
   CONSTRAINT `FK_sub_menu_accesses_menus` FOREIGN KEY (`menu_id`) REFERENCES `menus` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
 
--- Membuang data untuk tabel db_mtsn2.sub_menu_accesses: ~4 rows (lebih kurang)
+-- Membuang data untuk tabel db_mtsn2.sub_menu_accesses: ~5 rows (lebih kurang)
 /*!40000 ALTER TABLE `sub_menu_accesses` DISABLE KEYS */;
 INSERT INTO `sub_menu_accesses` (`id`, `group_id`, `menu_id`, `sub_menu_id`, `create`, `read`, `update`, `delete`, `print`, `user_id`, `created_at`, `updated_at`) VALUES
 	(27, 1, 13, 11, 1, 1, 1, 1, 1, 1, '2022-02-18 09:25:42', '2022-02-18 09:25:42'),
@@ -917,7 +978,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `users_email_unique` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=505 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Membuang data untuk tabel db_mtsn2.users: ~4 rows (lebih kurang)
+-- Membuang data untuk tabel db_mtsn2.users: ~2 rows (lebih kurang)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `remember_token`, `group_id`, `foto`, `status`, `created_at`, `updated_at`) VALUES
 	(1, 'administrator', 'adri.saputra.ibrahim@gmail.com', '2022-03-01 16:30:46', '$2y$10$Rc.eCud5IYgaJAeFIaeT2OQM9L4MiqdVkV..p1wbQvnPxxG6L67my', NULL, NULL, NULL, 1, '1641869792.jpg', 1, '2021-04-05 14:20:00', '2022-03-01 16:30:46'),
