@@ -12,12 +12,8 @@
 @section('content')
     <div class="row">
         <div class="col-12">
-            <div class="card-box">
-                <h4 class="header-title m-t-0">Selamat datang di MTsN 1 Kendari</h4>
-                <div class="button-list">
-                    <button type="button" class="btn btn-info waves-effect waves-light" data-toggle="modal" data-target=".bs-example-modal-lg">Isi Buku Tamu</button>
-                    <a href="{{ url('/') }}" class="btn btn-warning btn-flat" title="Refresh halaman">Refresh</a>
-                </div>
+            <div class="card-box" style="background-color: #8bc34a;">
+                <center><img src="{{ asset('assets/core-admin/core-dist/img/banner.png') }}" height="120px"></center>
                 </div>
             <!-- end row -->
             </div>
@@ -29,6 +25,26 @@
     <div class="row">
         <div class="col-12">
             <div class="card-box">
+                <div class="box-header with-border" style="margin-bottom:50px;">
+                    <div class="box-tools pull-left">
+                        <div>
+                            <button type="button" class="btn btn-info waves-effect waves-light" data-toggle="modal" data-target=".bs-example-modal-lg">Isi Buku Tamu</button>
+                            <a href="{{ url('/') }}" class="btn btn-warning btn-flat" title="Refresh halaman">Refresh</a>
+                        </div>
+                    </div>
+                    <div class="box-tools pull-right">
+                        <div class="form-inline">
+                            <form action="{{ url('/guest_book/search2') }}" method="GET">
+                                <div class="input-group margin">
+                                    <input type="text" class="form-control" name="search" placeholder="Masukkan kata kunci pencarian" style="height: 35px;">
+                                    <span class="input-group-btn">
+                                        <button type="submit" class="btn btn-danger btn-flat">cari</button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
                 <table class="table table-hover m-0 tickets-list table-actions-bar dt-responsive nowrap" cellspacing="0" width="100%" >
                     <thead>
                         <tr>
@@ -54,9 +70,10 @@
                         </tr>
                         @endforeach
                     </tbody>
-                </table>
+                </table><br>
                 {{ $guest_book->appends(Request::only('search'))->links() }}
             </div>
+            
         </div>
         <!--  Modal content for the above example -->
         <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true"

@@ -17,15 +17,12 @@
         <!-- Begin page -->
         <div id="wrapper">
             
-            <!-- ========== Left Sidebar Start ========== -->
-            @include('layouts._partials._sidebar')
-
             <!-- ============================================================== -->
             <!-- Start right Content here -->
             <!-- ============================================================== -->
-            <div class="content-page">
+            <div class="content-page" style="margin-left: 0px;">
                 <!-- Top Bar Start -->
-                <div class="topbar">
+                {{--<div class="topbar">
                  <nav class="navbar-custom">
 
                     <ul class="list-unstyled topbar-right-menu float-right mb-0">
@@ -41,26 +38,9 @@
 
                     </ul>
 
-                    <ul class="list-inline menu-left mb-0">
-                        <li class="float-left">
-                            <button class="button-menu-mobile open-left">
-                                <i class="dripicons-menu"></i>
-                            </button>
-                        </li>
-                        <li>
-                            <div class="page-title-box">
-                                <h4 class="page-title">Buku Tamu </h4>
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item active">Buku Tamu - MTsN 1 Kendari</li>
-                                </ol>
-                            </div>
-                        </li>
-
-                    </ul>
-
                 </nav>
 
-                </div>
+                </div>--}}
                 <!-- Top Bar End -->
 
 

@@ -6,6 +6,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegistrasiController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GuestBookController;
+use App\Http\Controllers\IncomingMailController;
+use App\Http\Controllers\OutgoingMailController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\RekapitulasiController;
 use App\Http\Controllers\SendEmailController;
@@ -45,7 +47,7 @@ Route::get('/clear-cache-all', function() {
 // });
 Route::get('/',[GuestBookController::class, 'index']);
 Route::post('/guest_book', [GuestBookController::class, 'store']);
-Route::get('/guest_book/search', [GuestBookController::class, 'search']);
+Route::get('/guest_book/search2', [GuestBookController::class, 'search']);
 
 Route::post('/login_w', [LoginController::class, 'authenticate']);
 Route::get('registrasi_w', [RegistrasiController::class, 'registrasi']);
@@ -58,15 +60,29 @@ Route::put('/user/edit_profil/{user}', [UserController::class, 'update_profil'])
 
 Route::middleware(['user_access','verified'])->group(function () {
     
-    ## Pegawai
+    ## Buku Tamu
     Route::get('/guest_book', [GuestBookController::class, 'index']);
-    Route::get('/pegawai/search', [PegawaiController::class, 'search']);
-    Route::get('/pegawai/create', [PegawaiController::class, 'create']);
-    Route::post('/pegawai', [PegawaiController::class, 'store']);
-    Route::get('/pegawai/edit/{pegawai}', [PegawaiController::class, 'edit']);
-    Route::put('/pegawai/edit/{pegawai}', [PegawaiController::class, 'update']);
-    Route::get('/pegawai/hapus/{pegawai}',[PegawaiController::class, 'delete']);
-    Route::post('/pegawai/import', [PegawaiController::class, 'import']);
+    Route::get('/guest_book/search', [GuestBookController::class, 'search']);
+    Route::get('/guest_book/detail/{guest_book}', [GuestBookController::class, 'detail']);
+    Route::get('/guest_book/hapus/{guest_book}',[GuestBookController::class, 'delete']);
+
+    ## Surat Masuk
+    Route::get('/incoming_mail', [IncomingMailController::class, 'index']);
+    Route::get('/incoming_mail/search', [IncomingMailController::class, 'search']);
+    Route::get('/incoming_mail/create', [IncomingMailController::class, 'create']);
+    Route::post('/incoming_mail', [IncomingMailController::class, 'store']);
+    Route::get('/incoming_mail/edit/{incoming_mail}', [IncomingMailController::class, 'edit']);
+    Route::put('/incoming_mail/edit/{incoming_mail}', [IncomingMailController::class, 'update']);
+    Route::get('/incoming_mail/hapus/{incoming_mail}',[IncomingMailController::class, 'delete']);
+
+    ## Surat Keluar
+    Route::get('/outgoing_mail', [OutgoingMailController::class, 'index']);
+    Route::get('/outgoing_mail/search', [OutgoingMailController::class, 'search']);
+    Route::get('/outgoing_mail/create', [OutgoingMailController::class, 'create']);
+    Route::post('/outgoing_mail', [OutgoingMailController::class, 'store']);
+    Route::get('/outgoing_mail/edit/{outgoing_mail}', [OutgoingMailController::class, 'edit']);
+    Route::put('/outgoing_mail/edit/{outgoing_mail}', [OutgoingMailController::class, 'update']);
+    Route::get('/outgoing_mail/hapus/{outgoing_mail}',[OutgoingMailController::class, 'delete']);
 
     Route::get('/report_excel',[ReportController::class, 'report_excel']);
     Route::get('/report_pdf',[ReportController::class, 'report_pdf']);

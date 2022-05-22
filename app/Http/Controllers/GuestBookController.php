@@ -17,7 +17,12 @@ class GuestBookController extends Controller
     {
         $title = "Buku Tamu";
         $guest_book = GuestBook::orderBy('id', 'DESC')->paginate(25)->onEachSide(1);
-        return view('guest_book.index', compact('title', 'guest_book'));
+
+        if(Auth::user()){
+            return view('admin.guest_book.index', compact('title', 'guest_book'));
+        } else {
+            return view('guest_book.index', compact('title', 'guest_book'));
+        }
     }
 
 	## Tampilkan Data Search
@@ -33,7 +38,11 @@ class GuestBookController extends Controller
                                 ->orWhere('necessity', 'LIKE', '%' . $guest_book . '%');
                         })->orderBy('id','DESC')->paginate(25)->onEachSide(1);
         
-        return view('guest_book.index', compact('title', 'guest_book'));
+        if(Auth::user()){
+            return view('admin.guest_book.index', compact('title', 'guest_book'));
+        } else {
+            return view('guest_book.index', compact('title', 'guest_book'));
+        }
     }
 	
     ## Simpan Data
@@ -58,6 +67,28 @@ class GuestBookController extends Controller
         
         activity()->log('Tambah Data Buku Tamu');
 		return redirect('/')->with('status','Data Tersimpan');
+    }
+    
+    ## Tampilkan Form Detail
+    public function detail($guest_book)
+    {
+        $title = "Buku Tamu";
+        $guest_book = Crypt::decrypt($guest_book);
+        $guest_book = GuestBook::where('id',$guest_book)->first();
+        $view=view('admin.guest_book.detail', compact('title','guest_book'));
+        $view=$view->render();
+        return $view;
+    }
+
+    ## Hapus Data
+    public function delete($guest_book)
+    {
+        $guest_book = Crypt::decrypt($guest_book);
+        $guest_book = GuestBook::where('id',$guest_book)->first();
+    	$guest_book->delete();
+
+        activity()->log('Hapus Data guest_book dengan ID = '.$guest_book->id);
+        return redirect('/guest_book')->with('status', 'Data Berhasil Dihapus');
     }
  
 }
