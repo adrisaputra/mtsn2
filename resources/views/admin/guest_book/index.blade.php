@@ -12,18 +12,20 @@
 	
 	<section class="content">
 	<div class="box">   
-		<div class="box-header with-border">
+	<div class="box-header with-border">
 			<div class="box-tools pull-left">
 				<div style="padding-top:10px">
-					<a href="{{ url('/'.Request::segment(1)) }}" class="btn btn-warning btn-flat" title="Refresh halaman">Refresh</a>
+					<a href="{{ url('/'.Request::segment(1)) }}" class="btn btn-warning btn-flat" title="Refresh Halaman">Refresh</a>    
+					<a href="{{ url('/'.Request::segment(1).'/report?date='.request()->get('date').'&search='.request()->get('search').'') }}" class="btn btn-info btn-flat" title="Cetak Buku Tamu">Cetak</a>    
 				</div>
 			</div>
 			<div class="box-tools pull-right">
 				<div class="form-inline">
 					<form action="{{ url('/'.Request::segment(1).'/search') }}" method="GET">
-						<div class="input-guest_book margin">
+						<input type="text" class="form-control datepicker" placeholder="Tanggal" name="date" value="@if(Request::get('date')) {{ Request::get('date') }} @else {{ date('Y-m-d') }} @endif">
+						<div class="input-group margin">
 							<input type="text" class="form-control" name="search" placeholder="Masukkan kata kunci pencarian">
-							<span class="input-guest_book-btn">
+							<span class="input-group-btn">
 								<button type="submit" class="btn btn-danger btn-flat">cari</button>
 							</span>
 						</div>
@@ -48,9 +50,9 @@
 					<tr>
 						<th>No.</th>
 						<th>Nama Tamu</th>
+						<th>No. HP</th>
 						<th>Asal Instansi</th>
 						<th>Yang Ingin Ditemui</th>
-						<th>Keperluan</th>
 						<th>Waktu</th>
 						<th>Foto</th>
 						<th style="width: 10%">#aksi</th>
@@ -59,9 +61,9 @@
 					<tr>
 						<td><b>{{ ($guest_book ->currentpage()-1) * $guest_book ->perpage() + $loop->index + 1 }}</b></td>
 						<td>{{ $v->guest_name }}</td>
+						<td>{{ $v->phone_number }}</td>
 						<td>{{ $v->agency_name }}</td>
 						<td>{{ $v->destination_name }}</td>
-						<td>{{ $v->necessity }}</td>
 						<td>{{ $v->created_at->format('d-m-Y H:i:s') }}</td>
 						<td>
 							@if($v->photo)

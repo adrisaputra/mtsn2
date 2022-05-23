@@ -21,7 +21,7 @@ class LogController extends Controller
     public function index()
     {
         $title = "Log";
-        $log = Log::orderBy('id','DESC')->paginate(25)->onEachSide(1);
+        $log = Log::whereNotNull('causer_id')->orderBy('id','DESC')->paginate(25)->onEachSide(1);
         return view('admin.log.index',compact('title','log'));
     }
 
@@ -30,7 +30,8 @@ class LogController extends Controller
     {
         $title = "Log";
         $log = $request->get('search');
-        $log = Log::where(function ($query) use ($log) {
+        $log = Log::whereNotNull('causer_id')
+                    ->where(function ($query) use ($log) {
                         $query->where(function ($query) use ($log) {
                             $query->where('description', 'LIKE', '%'.$log.'%');
                         })

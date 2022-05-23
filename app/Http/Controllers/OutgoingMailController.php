@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\DB; //untuk membuat query di controller
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Crypt;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use PhpOffice\PhpSpreadsheet\Writer\Xls;
 
 class OutgoingMailController extends Controller
 {
@@ -152,5 +155,70 @@ class OutgoingMailController extends Controller
 
         activity()->log('Hapus Data Surat Keluar dengan ID = '.$outgoing_mail->id);
         return redirect('/outgoing_mail')->with('status', 'Data Berhasil Dihapus');
+    }
+
+    ## Tampilkan Data Search
+    public function report_excel(Request $request)
+    {
+        $spreadsheet = new Spreadsheet();
+        $spreadsheet->setActiveSheetIndex(0);
+        $sheet = $spreadsheet->getActiveSheet();
+
+        $sheet->getColumnDimension('A')->setWidth(6);
+		$sheet->getColumnDimension('B')->setWidth(30);
+		$sheet->getColumnDimension('C')->setWidth(20);
+		$sheet->getColumnDimension('D')->setWidth(30);
+		$sheet->getColumnDimension('E')->setWidth(30);
+		$sheet->getColumnDimension('F')->setWidth(20);
+		$sheet->getColumnDimension('G')->setWidth(30);
+		$sheet->getColumnDimension('H')->setWidth(90);
+
+        $sheet->setCellValue('A1', 'DATA SURAT KELUAR'); $sheet->mergeCells('A1:H1');
+        $sheet->getStyle('A1:H1')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+        $sheet->getStyle('A1:H1')->getFont()->setBold(true);
+        
+        $sheet->setCellValue('A3', 'NO');
+        $sheet->setCellValue('B3', 'NOMOR SURAT');
+        $sheet->setCellValue('C3', 'TANGGAL SURAT');
+        $sheet->setCellValue('D3', 'DARI');
+        $sheet->setCellValue('E3', 'PENGIRIM');
+        $sheet->setCellValue('F3', 'TANGGAL MASUK');
+        $sheet->setCellValue('G3', 'TUJUAN');
+        $sheet->setCellValue('H3', 'PERIHAL');
+        
+        $sheet->getStyle('A3:H3')->getFont()->setBold(true);
+
+        $rows = 4;
+        $no = 1;
+    
+        $outgoing_mail = OutgoingMail::get();
+        
+        foreach($outgoing_mail as $v){
+            $sheet->setCellValue('A' . $rows, $no++);
+            $sheet->setCellValue('B' . $rows, $v->mail_number);
+            $sheet->setCellValue('C' . $rows, date('d-m-Y', strtotime($v->letter_date)));
+            $sheet->setCellValue('D' . $rows, $v->mail_from);
+            $sheet->setCellValue('E' . $rows, $v->sender);
+            $sheet->setCellValue('F' . $rows, date('d-m-Y', strtotime($v->entry_date)));
+            $sheet->setCellValue('G' . $rows, $v->destination);
+            $sheet->setCellValue('H' . $rows, $v->about);
+            $rows++;
+        }
+        
+        $sheet->getStyle('A3:H'.($rows-1))->getBorders()->getAllBorders()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
+        $sheet->getStyle('A3:H'.($rows-1))->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+        
+        $type = 'xlsx';
+        $fileName = "DATA SURAT KELUAR.".$type;
+
+        if($type == 'xlsx') {
+            $writer = new Xlsx($spreadsheet);
+        } else if($type == 'xls') {
+            $writer = new Xls($spreadsheet);			
+        }		
+        $writer->save("public/upload/report/".$fileName);
+        header("Content-Type: application/vnd.ms-excel");
+        return redirect(url('/')."/public/upload/report/".$fileName);    
+
     }
 }

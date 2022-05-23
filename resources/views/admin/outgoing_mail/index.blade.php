@@ -18,6 +18,7 @@
 					@can('tambah-data')
 						<a href="{{ url('/'.Request::segment(1).'/create') }}" class="btn btn-success btn-flat" title="Tambah Data">Tambah</a>
 					@endcan
+					<a href="{{ url('/'.Request::segment(1).'/report') }}" class="btn btn-info btn-flat" title="Cetak Surat Masuk">Cetak</a>    
 					<a href="{{ url('/'.Request::segment(1)) }}" class="btn btn-warning btn-flat" title="Refresh halaman">Refresh</a>
 				</div>
 			</div>

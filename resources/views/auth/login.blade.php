@@ -45,7 +45,6 @@ $setting = SiteHelpers::setting();
                 <hr style="border: 0.5px dashed #d2d6de">
                 
                 <p><center><a href="{{ url('forgot-password')}}">Lupa Password ? </a></center></p>
-                <p><center>Belum registrasi ? <a href="{{ url('register')}}">Buat Akun Di Sini !!!</a></center></p>
             </div>
         </div>
 

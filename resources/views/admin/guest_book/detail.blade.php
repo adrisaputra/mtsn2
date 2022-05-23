@@ -31,6 +31,13 @@
 					</div>
 					
 					<div class="form-group ">
+						<label class="col-sm-2 control-label">{{ __('No. HP') }}</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" placeholder="No. HP" name="phone_number" value="{{ $guest_book->phone_number }}" disabled>
+						</div>
+					</div>
+					
+					<div class="form-group ">
 						<label class="col-sm-2 control-label">{{ __('Asal/Instansi') }}</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" placeholder="Nama Grup" name="agency_name" value="{{ $guest_book->agency_name }}" disabled>

@@ -3328,9 +3328,9 @@ table.text-center th {
   background: #fff;
   padding: 20px;
   border-style: solid;
-  border-color: #ece2e2;
+  border-color: #74d166;
   color: #666;
-  border-radius: 50px 20px;
+  border-radius: 20px 20px;
 }
 .login-box-body .form-control-feedback,
 .register-box-body .form-control-feedback {

@@ -8,6 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GuestBookController;
 use App\Http\Controllers\IncomingMailController;
 use App\Http\Controllers\OutgoingMailController;
+use App\Http\Controllers\SurveyController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\RekapitulasiController;
 use App\Http\Controllers\SendEmailController;
@@ -48,6 +49,8 @@ Route::get('/clear-cache-all', function() {
 Route::get('/',[GuestBookController::class, 'index']);
 Route::post('/guest_book', [GuestBookController::class, 'store']);
 Route::get('/guest_book/search2', [GuestBookController::class, 'search']);
+Route::get('/survey/', [SurveyController::class, 'index']);
+Route::get('/select_survey/{survey}', [SurveyController::class, 'store']);
 
 Route::post('/login_w', [LoginController::class, 'authenticate']);
 Route::get('registrasi_w', [RegistrasiController::class, 'registrasi']);
@@ -65,6 +68,7 @@ Route::middleware(['user_access','verified'])->group(function () {
     Route::get('/guest_book/search', [GuestBookController::class, 'search']);
     Route::get('/guest_book/detail/{guest_book}', [GuestBookController::class, 'detail']);
     Route::get('/guest_book/hapus/{guest_book}',[GuestBookController::class, 'delete']);
+    Route::get('/guest_book/report',[GuestBookController::class, 'report_excel']);
 
     ## Surat Masuk
     Route::get('/incoming_mail', [IncomingMailController::class, 'index']);
@@ -74,6 +78,7 @@ Route::middleware(['user_access','verified'])->group(function () {
     Route::get('/incoming_mail/edit/{incoming_mail}', [IncomingMailController::class, 'edit']);
     Route::put('/incoming_mail/edit/{incoming_mail}', [IncomingMailController::class, 'update']);
     Route::get('/incoming_mail/hapus/{incoming_mail}',[IncomingMailController::class, 'delete']);
+    Route::get('/incoming_mail/report',[IncomingMailController::class, 'report_excel']);
 
     ## Surat Keluar
     Route::get('/outgoing_mail', [OutgoingMailController::class, 'index']);
@@ -83,6 +88,7 @@ Route::middleware(['user_access','verified'])->group(function () {
     Route::get('/outgoing_mail/edit/{outgoing_mail}', [OutgoingMailController::class, 'edit']);
     Route::put('/outgoing_mail/edit/{outgoing_mail}', [OutgoingMailController::class, 'update']);
     Route::get('/outgoing_mail/hapus/{outgoing_mail}',[OutgoingMailController::class, 'delete']);
+    Route::get('/outgoing_mail/report',[OutgoingMailController::class, 'report_excel']);
 
     Route::get('/report_excel',[ReportController::class, 'report_excel']);
     Route::get('/report_pdf',[ReportController::class, 'report_pdf']);
