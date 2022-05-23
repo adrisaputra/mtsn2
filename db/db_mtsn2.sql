@@ -29,9 +29,9 @@ CREATE TABLE IF NOT EXISTS `activity_log` (
   KEY `subject` (`subject_type`,`subject_id`),
   KEY `causer` (`causer_type`,`causer_id`),
   KEY `activity_log_log_name_index` (`log_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=510 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=513 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Membuang data untuk tabel db_mtsn2.activity_log: ~458 rows (lebih kurang)
+-- Membuang data untuk tabel db_mtsn2.activity_log: ~470 rows (lebih kurang)
 /*!40000 ALTER TABLE `activity_log` DISABLE KEYS */;
 INSERT INTO `activity_log` (`id`, `log_name`, `description`, `subject_type`, `event`, `subject_id`, `causer_type`, `causer_id`, `properties`, `batch_uuid`, `created_at`, `updated_at`) VALUES
 	(1, 'default', 'Log Out', NULL, NULL, NULL, 'App\\Models\\User', 482, '[]', NULL, '2021-10-29 10:30:24', '2021-10-29 10:30:24'),
@@ -529,7 +529,10 @@ INSERT INTO `activity_log` (`id`, `log_name`, `description`, `subject_type`, `ev
 	(506, 'default', 'Log Out', NULL, NULL, NULL, 'App\\Models\\User', 1, '[]', NULL, '2022-05-23 07:38:05', '2022-05-23 07:38:05'),
 	(507, 'default', 'Login', NULL, NULL, NULL, 'App\\Models\\User', 1, '[]', NULL, '2022-05-23 07:40:28', '2022-05-23 07:40:28'),
 	(508, 'default', 'Log Out', NULL, NULL, NULL, 'App\\Models\\User', 1, '[]', NULL, '2022-05-23 07:54:14', '2022-05-23 07:54:14'),
-	(509, 'default', 'Login', NULL, NULL, NULL, 'App\\Models\\User', 1, '[]', NULL, '2022-05-23 07:56:53', '2022-05-23 07:56:53');
+	(509, 'default', 'Login', NULL, NULL, NULL, 'App\\Models\\User', 1, '[]', NULL, '2022-05-23 07:56:53', '2022-05-23 07:56:53'),
+	(510, 'default', 'Log Out', NULL, NULL, NULL, 'App\\Models\\User', 1, '[]', NULL, '2022-05-23 08:49:52', '2022-05-23 08:49:52'),
+	(511, 'default', 'Login', NULL, NULL, NULL, 'App\\Models\\User', 1, '[]', NULL, '2022-05-23 08:50:57', '2022-05-23 08:50:57'),
+	(512, 'default', 'Log Out', NULL, NULL, NULL, 'App\\Models\\User', 1, '[]', NULL, '2022-05-23 08:51:20', '2022-05-23 08:51:20');
 /*!40000 ALTER TABLE `activity_log` ENABLE KEYS */;
 
 -- membuang struktur untuk table db_mtsn2.failed_jobs
@@ -581,7 +584,7 @@ CREATE TABLE IF NOT EXISTS `guest_books` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Membuang data untuk tabel db_mtsn2.guest_books: ~4 rows (lebih kurang)
+-- Membuang data untuk tabel db_mtsn2.guest_books: ~5 rows (lebih kurang)
 /*!40000 ALTER TABLE `guest_books` DISABLE KEYS */;
 INSERT INTO `guest_books` (`id`, `guest_name`, `phone_number`, `agency_name`, `destination_name`, `necessity`, `photo`, `created_at`, `updated_at`) VALUES
 	(1, 'Adri Saputra Ibrahim', '0822 5950 4093', 'Technos Studio', 'Kepala MTsN 1 Kendari', 'Kunjungan Kerja', 'tamu-628623b17c875.png', '2022-05-19 19:08:57', '2022-05-19 19:08:57'),
@@ -890,7 +893,7 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 -- Membuang data untuk tabel db_mtsn2.sessions: ~1 rows (lebih kurang)
 /*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-	('9ea99ojnowRnCt9OjKUSjY3hFnK5K8HiNJ0ph9rG', 1, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.67 Safari/537.36', 'YTo1OntzOjY6Il9mbGFzaCI7YToyOntzOjM6Im5ldyI7YTowOnt9czozOiJvbGQiO2E6MDp7fX1zOjY6Il90b2tlbiI7czo0MDoiZ2xlOFB0WXJ6Wjd6NWNsNnV2M1V1bXVWeXlpY3E0dkVZYk5zTUxvVyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDM6Imh0dHA6Ly9sb2NhbGhvc3QvbXRzbjIvb3V0Z29pbmdfbWFpbC9yZXBvcnQiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MTc6InBhc3N3b3JkX2hhc2hfd2ViIjtzOjYwOiIkMnkkMTAkUmMuZUN1ZDVJWWdhSkFlRklhZVQyT1FNOUw0TWlxZFZrVi4ucDF3YlF2blB4eEc2TDY3bXkiO30=', 1653266538);
+	('UUwkSlbNBLpKfHByHe0Ykrk7YqXpfkoaKESdz9NX', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.67 Safari/537.36', 'YTozOntzOjY6Il9mbGFzaCI7YToyOntzOjM6Im5ldyI7YTowOnt9czozOiJvbGQiO2E6MDp7fX1zOjY6Il90b2tlbiI7czo0MDoiNG0zMlM0TmNrWlQ4ODZ0Q3JiWEt2WEkwTjAzSjBXNnlBdW1iZ1hRZSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjI6Imh0dHA6Ly9sb2NhbGhvc3QvbXRzbjIiO319', 1653268573);
 /*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
 
 -- membuang struktur untuk table db_mtsn2.settings
@@ -986,7 +989,7 @@ CREATE TABLE IF NOT EXISTS `surveys` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Membuang data untuk tabel db_mtsn2.surveys: ~0 rows (lebih kurang)
+-- Membuang data untuk tabel db_mtsn2.surveys: ~3 rows (lebih kurang)
 /*!40000 ALTER TABLE `surveys` DISABLE KEYS */;
 INSERT INTO `surveys` (`id`, `survey`, `created_at`, `updated_at`) VALUES
 	(1, 2, '2022-05-23 07:25:09', '2022-05-23 07:25:09'),
