@@ -32,52 +32,31 @@
 					</div>
 
 					<div class="form-group @if ($errors->has('letter_date')) has-error @endif">
-						<label class="col-sm-2 control-label">{{ __('Tanggal Surat') }} <span class="required" style="color: #dd4b39;">*</span></label>
+						<label class="col-sm-2 control-label">{{ __('Tanggal Surat Keluar') }} <span class="required" style="color: #dd4b39;">*</span></label>
 						<div class="col-sm-10">
 							@if ($errors->has('letter_date'))<label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> {{ $errors->first('letter_date') }}</label>@endif
 							<div class="input-group date">
 							<div class="input-group-addon">
 								<i class="fa fa-calendar"></i>
 							</div>
-							<input type="text" class="form-control datepicker" placeholder="Tanggal Surat" name="letter_date" value="{{ $outgoing_mail->letter_date }}">
+							<input type="text" class="form-control datepicker" placeholder="Tanggal Surat Keluar" name="letter_date" value="{{ $outgoing_mail->letter_date }}">
 							</div>
 						</div>
                          </div>
-
-					<div class="form-group @if ($errors->has('mail_from')) has-error @endif">
-						<label class="col-sm-2 control-label">{{ __('Dari') }} <span class="required" style="color: #dd4b39;">*</span></label>
-						<div class="col-sm-10">
-							@if ($errors->has('mail_from'))<label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> {{ $errors->first('mail_from') }}</label>@endif
-							<input type="text" class="form-control" placeholder="Dari" name="mail_from" value="{{ $outgoing_mail->mail_from }}" >
-						</div>
-					</div>
 
 					<div class="form-group @if ($errors->has('sender')) has-error @endif">
-						<label class="col-sm-2 control-label">{{ __('Pengirim') }} <span class="required" style="color: #dd4b39;">*</span></label>
+						<label class="col-sm-2 control-label">{{ __('Nama Pengantar Surat') }} <span class="required" style="color: #dd4b39;">*</span></label>
 						<div class="col-sm-10">
 							@if ($errors->has('sender'))<label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> {{ $errors->first('sender') }}</label>@endif
-							<input type="text" class="form-control" placeholder="Pengirim" name="sender" value="{{ $outgoing_mail->sender }}" >
+							<input type="text" class="form-control" placeholder="Nama Pengantar Surat" name="sender" value="{{ $outgoing_mail->sender }}" >
 						</div>
 					</div>
 
-					<div class="form-group @if ($errors->has('entry_date')) has-error @endif">
-						<label class="col-sm-2 control-label">{{ __('Tanggal Masuk') }} <span class="required" style="color: #dd4b39;">*</span></label>
-						<div class="col-sm-10">
-							@if ($errors->has('entry_date'))<label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> {{ $errors->first('entry_date') }}</label>@endif
-							<div class="input-group date">
-							<div class="input-group-addon">
-								<i class="fa fa-calendar"></i>
-							</div>
-							<input type="text" class="form-control datepicker" placeholder="Tanggal Masuk" name="entry_date" value="{{ $outgoing_mail->entry_date }}">
-							</div>
-						</div>
-                         </div>
-
 					<div class="form-group @if ($errors->has('destination')) has-error @endif">
-						<label class="col-sm-2 control-label">{{ __('Tujuan') }} <span class="required" style="color: #dd4b39;">*</span></label>
+						<label class="col-sm-2 control-label">{{ __('Instansi Tujuan') }} <span class="required" style="color: #dd4b39;">*</span></label>
 						<div class="col-sm-10">
 							@if ($errors->has('destination'))<label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> {{ $errors->first('destination') }}</label>@endif
-							<input type="text" class="form-control" placeholder="Tujuan" name="destination" value="{{ $outgoing_mail->destination }}" >
+							<input type="text" class="form-control" placeholder="Instansi Tujuan" name="destination" value="{{ $outgoing_mail->destination }}" >
 						</div>
 					</div>
 
@@ -90,7 +69,7 @@
 					</div>
 
 					<div class="form-group @if ($errors->has('link')) has-error @endif">
-						<label class="col-sm-2 control-label">{{ __('Link') }} <span class="required" style="color: #dd4b39;">*</span></label>
+						<label class="col-sm-2 control-label">{{ __('Link') }}</label>
 						<div class="col-sm-10">
 							@if ($errors->has('link'))<label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> {{ $errors->first('link') }}</label>@endif
 							<input type="text" class="form-control" placeholder="Link" name="link" value="{{ $outgoing_mail->link }}" >
@@ -98,7 +77,7 @@
 					</div>
 
 					<div class="form-group @if ($errors->has('file')) has-error @endif">
-						<label class="col-sm-2 control-label">{{ __('File') }} <span class="required" style="color: #dd4b39;">*</span></label>
+						<label class="col-sm-2 control-label">{{ __('File') }}</label>
 						<div class="col-sm-10">
 							@if ($errors->has('file'))<label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> {{ $errors->first('file') }}</label>@endif
 							<input type="file" class="form-control" placeholder="File" name="file" value="{{ $outgoing_mail->file }}" >

@@ -48,6 +48,14 @@
 						</div>
 					</div>
 					
+					<div class="form-group @if ($errors->has('running_text')) has-error @endif">
+						<label class="col-sm-2 control-label">{{ __('Text Berjalan ') }}</label>
+						<div class="col-sm-10">
+							@if ($errors->has('running_text'))<label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> {{ $errors->first('running_text') }}</label>@endif
+							<input type="running_text" class="form-control" placeholder="Text Berjalan " name="running_text" value="{{ $setting->running_text }}" >
+						</div>
+					</div>
+                    
 					<div class="form-group @if ($errors->has('small_icon')) has-error @endif">
 						<label class="col-sm-2 control-label">{{ __('Logo Kecil') }}</label>
 						<div class="col-sm-10">

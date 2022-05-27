@@ -53,8 +53,7 @@
 						<th style="width: 60px">No</th>
 						<th>No Surat</th>
 						<th>Tanggal Surat</th>
-						<th>Dari</th>
-						<th>Tujuan</th>
+						<th>Instansi Pengirim</th>
 						<th>Perihal</th>
 						<th>File</th>
 						<th style="width: 20%">#aksi</th>
@@ -63,9 +62,8 @@
 					<tr>
 						<td>{{ ($incoming_mail ->currentpage()-1) * $incoming_mail ->perpage() + $loop->index + 1 }}</td>
 						<td>{{ $v->mail_number }}</td>
-						<td>{{ $v->letter_date }}</td>
-						<td>{{ $v->mail_from }}</td>
-						<td>{{ $v->destination }}</td>
+						<td>{{ date('d-m-Y', strtotime($v->letter_date)) }}</td>
+						<td>{{ $v->sender }}</td>
 						<td>{{ $v->about }}</td>
 						<td>
 							@if($v->file)

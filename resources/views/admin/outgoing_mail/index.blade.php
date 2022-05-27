@@ -51,9 +51,9 @@
 					<tr style="background-color: gray;color:white">
 						<th style="width: 60px">No</th>
 						<th>No Surat</th>
-						<th>Tanggal Surat</th>
-						<th>Dari</th>
-						<th>Tujuan</th>
+						<th>Tanggal Surat Keluar</th>
+						<th>Nama Pengantar Surat</th>
+						<th>Instansi Tujuan</th>
 						<th>Perihal</th>
 						<th>File</th>
 						<th style="width: 20%">#aksi</th>
@@ -62,8 +62,8 @@
 					<tr>
 						<td>{{ ($outgoing_mail ->currentpage()-1) * $outgoing_mail ->perpage() + $loop->index + 1 }}</td>
 						<td>{{ $v->mail_number }}</td>
-						<td>{{ $v->letter_date }}</td>
-						<td>{{ $v->mail_from }}</td>
+						<td>{{ date('d-m-Y', strtotime($v->letter_date)) }}</td>
+						<td>{{ $v->sender }}</td>
 						<td>{{ $v->destination }}</td>
 						<td>{{ $v->about }}</td>
 						<td>

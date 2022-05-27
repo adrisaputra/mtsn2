@@ -98,7 +98,7 @@ class GuestBookController extends Controller
     	$guest_book->delete();
 
         activity()->log('Hapus Data guest_book dengan ID = '.$guest_book->id);
-        return redirect('/guest_book')->with('status', 'Data Berhasil Dihapus');
+        return redirect('/guest_books')->with('status', 'Data Berhasil Dihapus');
     }
 
     ## Tampilkan Data Search

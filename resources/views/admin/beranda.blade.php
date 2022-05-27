@@ -28,7 +28,7 @@
 						<div class="icon">
 						<i class="fa fa-users"></i>
 						</div>
-						<a href="{{ url('guest_book') }}" class="small-box-footer">Detail <i class="fa fa-arrow-circle-right"></i></a>
+						<a href="{{ url('guest_books') }}" class="small-box-footer">Detail <i class="fa fa-arrow-circle-right"></i></a>
 					</div>
 				</div>
 				<!-- ./col -->

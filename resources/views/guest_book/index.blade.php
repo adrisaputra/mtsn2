@@ -13,8 +13,17 @@
     <div class="row">
         <div class="col-12">
             <div class="card-box" style="background-color: #8bc34a;">
-                <img src="{{ asset('assets/core-admin/core-dist/img/qrcode.png') }}" height="120px" style="position:absolute">
-                <center><img src="{{ asset('assets/core-admin/core-dist/img/banner.png') }}" height="120px"></center>
+                <div class="row">
+                    <div class="col-lg-2 col-sm-12 col-sx-12">   
+                        <img src="{{ asset('assets/core-admin/core-dist/img/qrcode.png') }}" height="100px">
+                    </div>
+                    <div class="col-lg-8 col-sm-12 col-sx-12">   
+                        <center><img src="{{ asset('assets/core-admin/core-dist/img/banner.png') }}" height="100px" width="40%"></center>
+                    </div>
+                    <div class="col-lg-2 col-sm-12 col-sx-12">   
+                        <img src="{{ asset('assets/core-admin/core-dist/img/16529656791.png') }}" height="100px" style="float: right;">
+                    </div>
+                </div>      
                 </div>
             <!-- end row -->
             </div>
@@ -99,7 +108,7 @@
                     <div class="modal-body">
                        <div class="row">
                             <div class="col-lg-6">           
-                                    <form action="{{ url('/guest_book') }}" method="POST" enctype="multipart/form-data" class="form-horizontal">
+                                    <form action="{{ url('/save_guest_book') }}" method="POST" enctype="multipart/form-data" class="form-horizontal">
                                     {{ csrf_field() }}
                                         <div class="form-group">
                                             <label for="nama_ortu">Nama Tamu<span class="text-danger">*</span></label>

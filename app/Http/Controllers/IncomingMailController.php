@@ -63,20 +63,16 @@ class IncomingMailController extends Controller
             'mail_number' => 'required',
             'letter_date' => 'required',
             'entry_date' => 'required',
-            'mail_from' => 'required',
             'sender' => 'required',
-            'destination' => 'required',
             'about' => 'required',
             'link' => 'required_if:file,==,NULL',
-            'file' => 'required_if:link,==,NULL|mimes:jpg,jpeg,png,pdf|max:1000',
+            'file' => 'mimes:jpg,jpeg,png,pdf|max:1000',
         ]);
 
 		$input['mail_number'] = $request->mail_number;
 		$input['letter_date'] = $request->letter_date;
 		$input['entry_date'] = $request->entry_date;
-		$input['mail_from'] = $request->mail_from;
 		$input['sender'] = $request->sender;
-		$input['destination'] = $request->destination;
 		$input['about'] = $request->about;
 		$input['link'] = $request->link;
 
@@ -115,12 +111,10 @@ class IncomingMailController extends Controller
             'mail_number' => 'required',
             'letter_date' => 'required',
             'entry_date' => 'required',
-            'mail_from' => 'required',
             'sender' => 'required',
-            'destination' => 'required',
             'about' => 'required',
             'link' => 'required_if:file,==,NULL',
-            'file' => 'required_if:link,==,NULL|mimes:jpg,jpeg,png,pdf|max:1000',
+            'file' => 'mimes:jpg,jpeg,png,pdf|max:1000',
         ]);
 
         if($request->file('file') && $incoming_mail->file){
@@ -168,25 +162,21 @@ class IncomingMailController extends Controller
 		$sheet->getColumnDimension('B')->setWidth(30);
 		$sheet->getColumnDimension('C')->setWidth(20);
 		$sheet->getColumnDimension('D')->setWidth(30);
-		$sheet->getColumnDimension('E')->setWidth(30);
-		$sheet->getColumnDimension('F')->setWidth(20);
-		$sheet->getColumnDimension('G')->setWidth(30);
-		$sheet->getColumnDimension('H')->setWidth(90);
+		$sheet->getColumnDimension('E')->setWidth(20);
+		$sheet->getColumnDimension('F')->setWidth(90);
 
-        $sheet->setCellValue('A1', 'DATA SURAT MASUK'); $sheet->mergeCells('A1:H1');
+        $sheet->setCellValue('A1', 'DATA SURAT MASUK'); $sheet->mergeCells('A1:F1');
         $sheet->getStyle('A1:H1')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
         $sheet->getStyle('A1:H1')->getFont()->setBold(true);
         
         $sheet->setCellValue('A3', 'NO');
         $sheet->setCellValue('B3', 'NOMOR SURAT');
         $sheet->setCellValue('C3', 'TANGGAL SURAT');
-        $sheet->setCellValue('D3', 'DARI');
-        $sheet->setCellValue('E3', 'PENGIRIM');
-        $sheet->setCellValue('F3', 'TANGGAL MASUK');
-        $sheet->setCellValue('G3', 'TUJUAN');
-        $sheet->setCellValue('H3', 'PERIHAL');
+        $sheet->setCellValue('D3', 'INSTANSI PENGIRIM');
+        $sheet->setCellValue('E3', 'TANGGAL MASUK');
+        $sheet->setCellValue('F3', 'PERIHAL');
         
-        $sheet->getStyle('A3:H3')->getFont()->setBold(true);
+        $sheet->getStyle('A3:F3')->getFont()->setBold(true);
 
         $rows = 4;
         $no = 1;
@@ -197,16 +187,14 @@ class IncomingMailController extends Controller
             $sheet->setCellValue('A' . $rows, $no++);
             $sheet->setCellValue('B' . $rows, $v->mail_number);
             $sheet->setCellValue('C' . $rows, date('d-m-Y', strtotime($v->letter_date)));
-            $sheet->setCellValue('D' . $rows, $v->mail_from);
-            $sheet->setCellValue('E' . $rows, $v->sender);
-            $sheet->setCellValue('F' . $rows, date('d-m-Y', strtotime($v->entry_date)));
-            $sheet->setCellValue('G' . $rows, $v->destination);
-            $sheet->setCellValue('H' . $rows, $v->about);
+            $sheet->setCellValue('D' . $rows, $v->sender);
+            $sheet->setCellValue('E' . $rows, date('d-m-Y', strtotime($v->entry_date)));
+            $sheet->setCellValue('F' . $rows, $v->about);
             $rows++;
         }
         
-        $sheet->getStyle('A3:H'.($rows-1))->getBorders()->getAllBorders()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
-        $sheet->getStyle('A3:H'.($rows-1))->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+        $sheet->getStyle('A3:F'.($rows-1))->getBorders()->getAllBorders()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
+        $sheet->getStyle('A3:F'.($rows-1))->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
         
         $type = 'xlsx';
         $fileName = "DATA SURAT MASUK.".$type;

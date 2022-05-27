@@ -1,5 +1,5 @@
          <!-- App favicon -->
-        <link rel="shortcut icon" href="{{ asset('guest_book/assets/images/favicon.ico') }}">
+        <link rel="shortcut icon" href="{{ asset('assets/core-admin/core-dist/img/16529656791.png') }}">
 
         <!-- DataTables -->
         <link href="{{ asset('guest_book/plugins/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />

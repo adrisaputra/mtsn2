@@ -11,8 +11,6 @@ class OutgoingMail extends Model
     protected $fillable = [
         'mail_number',
         'letter_date',
-        'entry_date',
-        'mail_from',
         'sender',
         'destination',
         'about',

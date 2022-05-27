@@ -45,9 +45,9 @@ Route::get('/clear-cache-all', function() {
 
 // Route::get('/', function () {
     // return view('auth.login');
-// });
-Route::get('/',[GuestBookController::class, 'index']);
-Route::post('/guest_book', [GuestBookController::class, 'store']);
+// });   
+Route::get('/', [GuestBookController::class, 'index']);
+Route::post('/save_guest_book', [GuestBookController::class, 'store']);
 Route::get('/guest_book/search2', [GuestBookController::class, 'search']);
 Route::get('/survey/', [SurveyController::class, 'index']);
 Route::get('/select_survey/{survey}', [SurveyController::class, 'store']);
@@ -64,11 +64,11 @@ Route::put('/user/edit_profil/{user}', [UserController::class, 'update_profil'])
 Route::middleware(['user_access','verified'])->group(function () {
     
     ## Buku Tamu
-    Route::get('/guest_book', [GuestBookController::class, 'index']);
-    Route::get('/guest_book/search', [GuestBookController::class, 'search']);
-    Route::get('/guest_book/detail/{guest_book}', [GuestBookController::class, 'detail']);
-    Route::get('/guest_book/hapus/{guest_book}',[GuestBookController::class, 'delete']);
-    Route::get('/guest_book/report',[GuestBookController::class, 'report_excel']);
+    Route::get('/guest_books', [GuestBookController::class, 'index']);
+    Route::get('/guest_books/search', [GuestBookController::class, 'search']);
+    Route::get('/guest_books/detail/{guest_book}', [GuestBookController::class, 'detail']);
+    Route::get('/guest_books/hapus/{guest_book}',[GuestBookController::class, 'delete']);
+    Route::get('/guest_books/report',[GuestBookController::class, 'report_excel']);
 
     ## Surat Masuk
     Route::get('/incoming_mail', [IncomingMailController::class, 'index']);

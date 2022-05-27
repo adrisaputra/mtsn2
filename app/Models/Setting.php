@@ -15,6 +15,7 @@ class Setting extends Model
         'large_icon',
         'background_login',
         'background_sidebar',
+        'running_text',
         'layout',
         'skin',
         'user_id'
