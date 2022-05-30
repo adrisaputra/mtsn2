@@ -15,29 +15,51 @@ use PhpOffice\PhpSpreadsheet\Writer\Xls;
 
 class GuestBookController extends Controller
 {
+    ## Cek Login
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+	
+    ## Tampikan Data
+    public function index_home()
+    {
+        $title = "Buku Tamu";
+        $guest_book = GuestBook::whereDate('created_at', '=', date('Y-m-d'))->orderBy('id', 'DESC')->paginate(25)->onEachSide(1);
+        return view('guest_book.index', compact('title', 'guest_book'));
+    }
+
     ## Tampikan Data
     public function index()
     {
         $title = "Buku Tamu";
         $guest_book = GuestBook::whereDate('created_at', '=', date('Y-m-d'))->orderBy('id', 'DESC')->paginate(25)->onEachSide(1);
-
-        if(Auth::user()){
-            return view('admin.guest_book.index', compact('title', 'guest_book'));
-        } else {
-            return view('guest_book.index', compact('title', 'guest_book'));
-        }
+        return view('admin.guest_book.index', compact('title', 'guest_book'));
     }
 
+	## Tampilkan Data Search
+	public function search_home(Request $request)
+    {
+        $title = "Buku Tamu";
+        $guest_book = $request->get('search');
+        $date = date('Y-m-d');
+        $guest_book = GuestBook::whereDate('created_at', '=', $date)
+                        ->where(function ($query) use ($guest_book) {
+                            $query->where('guest_name', 'LIKE', '%' . $guest_book . '%')
+                                ->orWhere('phone_number', 'LIKE', '%' . $guest_book . '%')
+                                ->orWhere('agency_name', 'LIKE', '%' . $guest_book . '%')
+                                ->orWhere('destination_name', 'LIKE', '%' . $guest_book . '%')
+                                ->orWhere('necessity', 'LIKE', '%' . $guest_book . '%');
+                        })->orderBy('id','DESC')->paginate(25)->onEachSide(1);
+        return view('guest_book.index', compact('title', 'guest_book'));
+    }
+	
 	## Tampilkan Data Search
 	public function search(Request $request)
     {
         $title = "Buku Tamu";
         $guest_book = $request->get('search');
-        if(Auth::user()){
-            $date = $request->get('date');
-        } else {
-            $date = date('Y-m-d');
-        }
+        $date = $request->get('date');
         $guest_book = GuestBook::whereDate('created_at', '=', $date)
                         ->where(function ($query) use ($guest_book) {
                             $query->where('guest_name', 'LIKE', '%' . $guest_book . '%')
@@ -47,11 +69,7 @@ class GuestBookController extends Controller
                                 ->orWhere('necessity', 'LIKE', '%' . $guest_book . '%');
                         })->orderBy('id','DESC')->paginate(25)->onEachSide(1);
         
-        if(Auth::user()){
-            return view('admin.guest_book.index', compact('title', 'guest_book'));
-        } else {
-            return view('guest_book.index', compact('title', 'guest_book'));
-        }
+        return view('admin.guest_book.index', compact('title', 'guest_book'));
     }
 	
     ## Simpan Data
@@ -76,7 +94,7 @@ class GuestBookController extends Controller
         GuestBook::create($input);
         
         activity()->log('Tambah Data Buku Tamu');
-		return redirect('/')->with('status','Data Tersimpan');
+		return redirect('/guest_books/show')->with('status','Data Tersimpan');
     }
     
     ## Tampilkan Form Detail
@@ -95,6 +113,13 @@ class GuestBookController extends Controller
     {
         $guest_book = Crypt::decrypt($guest_book);
         $guest_book = GuestBook::where('id',$guest_book)->first();
+        
+        $pathToYourFile = public_path('upload/images/'.$guest_book->photo);
+        if($guest_book->photo)
+        {
+            unlink($pathToYourFile);
+        }
+
     	$guest_book->delete();
 
         activity()->log('Hapus Data guest_book dengan ID = '.$guest_book->id);

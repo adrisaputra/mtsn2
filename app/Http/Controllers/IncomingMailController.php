@@ -36,10 +36,7 @@ class IncomingMailController extends Controller
         $incoming_mail = $request->get('search');
         $incoming_mail = IncomingMail::where(function ($query) use ($incoming_mail) {
                         $query->where('mail_number', 'LIKE', '%' . $incoming_mail . '%')
-                            ->orWhere('mail_from', 'LIKE', '%' . $incoming_mail . '%')
-                            ->orWhere('mail_from', 'LIKE', '%' . $incoming_mail . '%')
                             ->orWhere('sender', 'LIKE', '%' . $incoming_mail . '%')
-                            ->orWhere('destination', 'LIKE', '%' . $incoming_mail . '%')
                             ->orWhere('about', 'LIKE', '%' . $incoming_mail . '%');
                         })
                         ->orderBy('id','DESC')->paginate(25)->onEachSide(1);
@@ -145,6 +142,13 @@ class IncomingMailController extends Controller
     {
         $incoming_mail = Crypt::decrypt($incoming_mail);
         $incoming_mail = IncomingMail::where('id',$incoming_mail)->first();
+        
+        $pathToYourFile = public_path('upload/file_surat_masuk/'.$incoming_mail->file);
+        if($incoming_mail->file)
+        {
+            unlink($pathToYourFile);
+        }
+
     	$incoming_mail->delete();
 
         activity()->log('Hapus Data Surat Masuk dengan ID = '.$incoming_mail->id);

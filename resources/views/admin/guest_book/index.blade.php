@@ -15,6 +15,7 @@
 	<div class="box-header with-border">
 			<div class="box-tools pull-left">
 				<div style="padding-top:10px">
+					<a href="{{ url('/'.Request::segment(1).'/show') }}" class="btn btn-success btn-flat" title="Lihat Halaman">Buku Tamu</a>    
 					<a href="{{ url('/'.Request::segment(1)) }}" class="btn btn-warning btn-flat" title="Refresh Halaman">Refresh</a>    
 					<a href="{{ url('/'.Request::segment(1).'/report?date='.request()->get('date').'&search='.request()->get('search').'') }}" class="btn btn-info btn-flat" title="Cetak Buku Tamu">Cetak</a>    
 				</div>
@@ -88,7 +89,7 @@
 		@endcan
 		<div class="box-footer">
 			<!-- PAGINATION -->
-			<div class="float-right">{{ $guest_book->appends(Request::only('search'))->links() }}</div>
+			<div class="float-right">{{ $guest_book->appends(Request::only('date','search'))->links() }}</div>
 		</div>
 	</div>
 	</section>

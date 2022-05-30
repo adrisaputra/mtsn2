@@ -15,14 +15,16 @@ class SurveyController extends Controller
     ## Tampikan Data
     public function index()
     {
-        $title = "Survey Kepuasan";
+        $title = "Survey Penilaian";
         $survey = Survey::orderBy('id', 'DESC')->paginate(25)->onEachSide(1);
+        return view('survey.index', compact('title', 'survey'));
+    }
 
-        if(Auth::user()){
-            return view('admin.survey.index', compact('title', 'survey'));
-        } else {
-            return view('survey.index', compact('title', 'survey'));
-        }
+    ## Tampikan Data
+    public function thanks()
+    {
+        $title = "Survey Penilaian";
+        return view('survey.thanks', compact('title'));
     }
 
     ## Simpan Data
@@ -32,6 +34,6 @@ class SurveyController extends Controller
         Survey::create($input);
         
         activity()->log('Tambah Data Survey');
-		return redirect('/')->with('status','Survey Kepuasan Disimpan');
+		return redirect('/survey/thanks')->with('status','Survey Kepuasan Disimpan');
     }
 }

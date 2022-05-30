@@ -68,7 +68,6 @@
 							@endif
 						
 							<div style="padding-top:10px">
-								<button type="reset" class="btn btn-danger btn-flat btn-sm" title="Reset Data"> Reset</button>
 								<a href="{{ url('/'.Request::segment(1)) }}" class="btn btn-warning btn-flat btn-sm" title="Kembali">Kembali</a>
 							</div>
 

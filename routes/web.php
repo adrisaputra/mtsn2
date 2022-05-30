@@ -31,7 +31,7 @@ use App\Http\Controllers\UserController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Auth::routes(['verify' => true]);
+// Auth::routes(['verify' => true]);
 
 Route::get('/buat_storage', function () {
     Artisan::call('storage:link');
@@ -40,16 +40,17 @@ Route::get('/buat_storage', function () {
 
 Route::get('/clear-cache-all', function() {
     Artisan::call('cache:clear');
+    Artisan::call('route:clear');
+    Artisan::call('route:cache');
     dd("Cache Clear All");
 });
 
-// Route::get('/', function () {
-    // return view('auth.login');
-// });   
-Route::get('/', [GuestBookController::class, 'index']);
-Route::post('/save_guest_book', [GuestBookController::class, 'store']);
-Route::get('/guest_book/search2', [GuestBookController::class, 'search']);
+Route::get('/', function () {
+    return view('auth.login');
+});   
+
 Route::get('/survey/', [SurveyController::class, 'index']);
+Route::get('/survey/thanks', [SurveyController::class, 'thanks']);
 Route::get('/select_survey/{survey}', [SurveyController::class, 'store']);
 
 Route::post('/login_w', [LoginController::class, 'authenticate']);
@@ -57,13 +58,16 @@ Route::get('registrasi_w', [RegistrasiController::class, 'registrasi']);
 Route::post('registrasi_w', [RegistrasiController::class, 'store']);
 Route::post('/logout-sistem', [LoginController::class, 'logout']);
 
-Route::get('/dashboard', [HomeController::class, 'index'])->middleware('verified');
-Route::get('/user/edit_profil/{user}', [UserController::class, 'edit_profil'])->middleware('verified');
-Route::put('/user/edit_profil/{user}', [UserController::class, 'update_profil'])->middleware('verified');
+Route::get('/dashboard', [HomeController::class, 'index']);
+Route::get('/user/edit_profil/{user}', [UserController::class, 'edit_profil']);
+Route::put('/user/edit_profil/{user}', [UserController::class, 'update_profil']);
 
-Route::middleware(['user_access','verified'])->group(function () {
+Route::middleware(['user_access'])->group(function () {
     
     ## Buku Tamu
+    Route::get('/guest_books/show', [GuestBookController::class, 'index_home']);
+    Route::get('/guest_books/show/search2', [GuestBookController::class, 'search_home']);
+    Route::post('/guest_books', [GuestBookController::class, 'store']);
     Route::get('/guest_books', [GuestBookController::class, 'index']);
     Route::get('/guest_books/search', [GuestBookController::class, 'search']);
     Route::get('/guest_books/detail/{guest_book}', [GuestBookController::class, 'detail']);
@@ -168,4 +172,4 @@ Route::middleware(['cek_status','verified'])->group(function () {
 
 });
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

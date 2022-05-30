@@ -38,6 +38,6 @@ class LoginController extends Controller
     
        $request->session()->regenerateToken();
        Session::flush();
-       return redirect('login')->withSuccess('Terimakasih, selamat datang kembali!');
+       return redirect('/')->withSuccess('Terimakasih, selamat datang kembali!');
     }
 }
